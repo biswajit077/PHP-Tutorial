@@ -1,0 +1,74 @@
+we create a database 
+1. Goto command prompt window or git bash and changed the directory mysql/bin folder
+2. Type : mysql -u root -p then enter
+3. give the password if installation time set otherwise press enter
+4. Now set the password command prompt : set password for root@localhost = password('1234 or your password'); press enter
+5. Checked database :show databases;
+6. CREATE DATABASE blog;
+7. USE blog;
+8. CREATE TABLE users(
+	id INT AUTO_INCREMENT,
+	first_name varchar(50) NOT NULL,
+	last_name varchar(50) NOT NULL,
+	email_address varchar(100) NOT NULL,
+	PRIMARY KEY (id)
+);
+9. show tables;
+10. describe users;
+11. SELECT *FROM users;
+12. Now Insert the data row y row
+	INSERT INTO users VALUES(null,'FirstName', 'LastName', 'EmailAddress');
+	or
+	INSERT INTO users('first_name', 'last_name', 'email_address') VALUES('FirstName', 'LastName', 'EmailAddress');
+13. Show the row value
+	SELECT *FROM users;
+	or
+	SELECT *FROM users ORDER BY name ASC/DESC;
+	or
+	SELECT *FROM users LIMIT 2;
+	or
+	/* Using Alais combine multiple column*/
+	SELECT CONCAT_WS(' ', first_name, last_name) AS 'Full Name', email_address AS 'Email' FROM users;
+	
+14. Delete row data
+	DELETE *FROM users WHERE first_name = 'FirstName';
+
+15. Create another table name posts
+
+	CREATE TABLE posts(
+		id INT AUTO_INCREMENT,
+		title varchar(150),
+		body text,
+		author_id INT NOT NULL,
+		PRIMARY KEY(id)
+	);
+	
+16. Insert data
+	INSERT INTO posts(title, body, author_id) VALUES('My first post', 'The body of my post', 1);
+	
+17. UPDATE posts SET author_id = 2 WHERE id = 1;
+	UPDATE posts SET title='Update Again', body='Update Body' WHERE id=1;
+
+18. SELECT *FROM posts INNER JOIN users ON users.id = posts.id;
+
+## Another select process
+SELECT title, body, first_name, Last_name FROM posts INNER JOIN users ON users.id = posts.id;
+
+19. Now Changed column using ALTER keyword
+	ALTER TABLE posts CHANGE title subject varchar(100);
+
+20. Joining Tables
+	SELECT *FROM users INNER JOIN orders ON orders.user_id = users.id;
+	### Another system
+	SELECT users.id, first_name, order_number AS number FROM users INNER JOIN orders ON orders.user_id = users.id WHERE users.id = 1;
+	## Count Total Order
+	SELECT users.id, first_name, COUNT(order_number) AS number FROM users INNER JOIN orders ON orders.user_id = users.id WHERE users.id = 1;
+	
+	##LEFT JOIN
+	SELECT *FROM users LEFT JOIN orders ON usrs.id = orders.id;
+	##RIGHT JOIN
+	SELECT *FROM users RIGHT JOIN orders ON usrs.id = orders.id;
+
+
+
+
