@@ -1,0 +1,10 @@
+From Backend Team
+
+API
+=========
+
+Get All Orders
+
+GET request to /api/orders
+Sample Response:
+[{},{}]
