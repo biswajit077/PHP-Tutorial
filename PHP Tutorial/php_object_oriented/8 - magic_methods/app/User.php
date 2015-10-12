@@ -8,6 +8,8 @@
 class User{
     private $email;
     private $password;
+    private $fillable = array('email','password');
+    private $accessiable = array('email','password');
 
     public function __construct(Array $params = array()){
         //Class configuration
@@ -20,9 +22,37 @@ class User{
 
     public function __set($name, $value){
         //Called when trying to set an inaccessible property in object
+       
+        if(! in_array($name, $this->fillable))
+        {
+            return false;
+        }
         if(isset($this->$name)){
             $this->$name = $value;
         }
+    }
+    
+    public function __get($name){
+        //Called when trying to get the value of an inaccessible property in an object
+        
+        if(! in_array($name, $this->accessiable)){
+            return NULL;
+        }
+        
+        return isset($this->$name)? $this->$name : NULL;
+    }
+    
+    public function __toString(){
+        //Called when an object is cast to a string
+        //echo $joost
+        
+        $data = array();
+        
+        foreach ($this->accessiable as $key){
+            $data[$key] = $this->$key;
+        }
+        
+        return json_encode($data);
     }
     /**
      * Log in a user

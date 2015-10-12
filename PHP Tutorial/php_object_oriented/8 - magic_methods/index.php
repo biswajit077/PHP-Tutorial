@@ -14,7 +14,7 @@ require 'app/Helper.php';
 $rules = array('email' => 'required|email', 'password' => 'required|min:8');
 $data = array('email' => 'jooest@gmail.com', 'password' => '124445558');
 
-//run validation
+//Run validation
 $validator = new Validator();
 if($validator->validate($data, $rules) == true){
 
@@ -23,9 +23,13 @@ if($validator->validate($data, $rules) == true){
 
     $joost->email = 'jooest@yahoo.com';
     $joost->shoesize = '45';
+    $joost->password = 'sdsdhsewuyru';
 
+//     $joost->setEmail('jooest@yahoo.com');
     //Dump user
-    var_dump($joost);
+//     var_dump($joost);
+
+    echo $joost;
 }
 else{
 
