@@ -1,0 +1,6 @@
+Show erro report is danger
+- Apche server -> php.ini ->check (display_errors = off and log_errors = off)
+- Or initilaze the every pages of server scripting write 
+	ini_set('display_errors', 'off');
+	Another function use
+	error_reporting(0);

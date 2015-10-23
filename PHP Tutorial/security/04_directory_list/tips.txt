@@ -1,0 +1,4 @@
+If apache server show directory list then Create a .htaccess file in the root project directory
+
+Now write
+Options - Indexes

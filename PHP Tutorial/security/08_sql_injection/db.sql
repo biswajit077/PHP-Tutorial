@@ -1,0 +1,8 @@
+CREATE TABLE users(
+	id INT PRIMARY KEY AUTO INCREMENT,
+	email VARCHAR(255) UNIQUE,
+	password VARCHAR(255) NOT NULL,
+	username VARCHAR(255) NOT NULL
+);
+
+CREATE TABLE forum_topics();
