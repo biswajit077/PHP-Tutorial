@@ -70,6 +70,11 @@ class User{
         return 'Logging out ...';
     }
 
+    /**
+     * Set the user's password
+     * @param string $string
+     * @return User
+     */
     public function setPassword($string){
         $this->password = $string;
         return $this;
